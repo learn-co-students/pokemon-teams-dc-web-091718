@@ -107,3 +107,18 @@ DELETE /pokemons/:pokemon_id
   "trainer_id":1
 }
 ```
+
+
+
+
+
+function deletePokemon(event){
+  let pokemonId = event.currentTarget.id.split('-')[1]
+  fetch(`http://localhost:3000/pokemon/${pokemonId}`, {
+    method: "DELETE"
+  }).then(response => response.json())
+  .then(data => {
+    console.log(data)
+    document.querySelector(`#pokemon-${pokemonId}`).remove()
+  })
+}
